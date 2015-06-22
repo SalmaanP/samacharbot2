@@ -4,8 +4,9 @@ import sys
 from goose import Goose
 import praw
 import smrzr
-link="http://www.hindustantimes.com/bollywood/peepli-live-co-director-mahmood-faaroqui-arrested-on-rape-charges/article1-1361263.aspx"
+reload(sys)
+sys.setdefaultencoding('UTF8')
+link="http://www.newindianexpress.com/nation/Man-Caught-Urinating-in-Delhi-Metro-Disturbed-Passenger-Uploads-Video-in-Social-Media/2015/06/21/article2878562.ece"
 summ_article = smrzr.Summarizer(link)
 summaryy = summ_article.summary
-print summaryy
-sys.stdout.flush()
+print summaryy.encode("utf=8")
