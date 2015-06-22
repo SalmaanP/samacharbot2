@@ -2,5 +2,6 @@ git+git://github.com/lekhakpadmanabh/Summarizer.git
 goose-extractor==1.0.22
 praw==3.0.0
 git+git://github.com/networkx/networkx.git
+scipy==0.15.1
 numpy==1.9.1
 scikit-learn==0.15.2
