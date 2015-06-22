@@ -5,3 +5,4 @@ git+git://github.com/networkx/networkx.git
 numpy==1.8.1
 scipy==0.14.0
 scikit-learn==0.15.2
+sumy==0.3.0
