@@ -1,1 +1,1 @@
-bot: python hl3.py
+bot: python samacharbot2.py
