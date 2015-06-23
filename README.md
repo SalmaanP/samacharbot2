@@ -10,4 +10,4 @@ Uses two summarizing libraries
 
 Uses [Goose](https://github.com/grangier/python-goose) for scraping content.
 
-Find the bot on reddit [here](www.reddit.com/u/samacharbot2)
+Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
