@@ -28,7 +28,7 @@ while True:
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2)"""
         br = "\n\n---\n\n"
         upvotes = int(submission.score)
-        if upvotes > 0:
+        if upvotes > 3:
             if submission.domain not in blocked and submission.id not in blockedid:
                 try:
                     blockedid.append(submission.id)
