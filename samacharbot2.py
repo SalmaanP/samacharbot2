@@ -120,8 +120,10 @@ while True:
                             print parentid
                             comment_parent = r.get_info(thing_id=parentid)
                             sublink = comment_parent.link_id
-                            author = r.get_info(thing_id=sublink)
-                            if msg.author.name == author.author or msg.author.name == 'sallurocks':
+                            author1 = r.get_info(thing_id=sublink)
+                            print author1.author
+                            print msg.author.name
+                            if (str(msg.author.name) == str(author1.author)):
                                 comment_parent.delete()
                                 print "deletedd"
 
@@ -135,7 +137,6 @@ while True:
                             print type(e)
                             print e.args
                             print e
-                            print submission.id
                             print "\n"
                             # continue
                             msg.mark_as_read()
