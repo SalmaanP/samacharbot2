@@ -56,7 +56,7 @@ def summary(text):
     summarizer.stop_words = get_stop_words(LANGUAGE)
     short = ""
     for sentence in summarizer(parser.document, SENTENCES_COUNT):
-        short = short + ">" + "* " + str(sentence).decode('utf-8') + "\n\n"
+        short = short + ">" + "* " + str(sentence).decode('ascii','ignore') + "\n\n"
         #print(sentence)
     return short
 

@@ -42,3 +42,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 altsummary.pyc
+nltk_data
+config.pyc
+.pickle
+.pyc
+ignore
