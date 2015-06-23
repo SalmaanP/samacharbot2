@@ -46,5 +46,4 @@ config.pyc
 deletemsg.pyc
 .pyc
 ignore
-config.py
 *.pyc
