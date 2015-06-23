@@ -121,7 +121,7 @@ while True:
                             comment_parent = r.get_info(thing_id=parentid)
                             sublink = comment_parent.link_id
                             author = r.get_info(thing_id=sublink)
-                            if msg.author.name == author or msg.author.name == 'sallurocks':
+                            if msg.author.name == author.author or msg.author.name == 'sallurocks':
                                 comment_parent.delete()
                                 print "deletedd"
 
