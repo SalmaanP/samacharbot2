@@ -48,3 +48,5 @@ deletemsg.pyc
 .pickle
 .pyc
 ignore
+config.py
+*.pyc

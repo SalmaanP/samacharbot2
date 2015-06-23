@@ -17,11 +17,11 @@ r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
 r.login(config.uname, config.passwd)
 
-subreddit = r.get_subreddit('TESTBOTTEST')
+subreddit = r.get_subreddit('india')
 
 while True:
 
-    submissions = subreddit.get_hot(limit=100)
+    submissions = subreddit.get_new(limit=50)
     for submission in submissions:
         print submission.title
         summ = ""
