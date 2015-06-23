@@ -9,7 +9,7 @@ import os
 
 blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.com", "snapdeal.com", "ebay.com",
            "blogs.wsj.com", "pbs.twimg.com", "twitter.com", "buzzfeed.com", "ptinews.com", "vine.co", "indigogo.com",
-           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com"}
+           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com","youtu.be"}
 blockedid = []
 
 uname=os.environ['uname']
@@ -24,7 +24,7 @@ while True:
 
     submissions = subreddit.get_new(limit=51)
     for submission in submissions:
-        print submission.title
+        print submission.title.encode('ascii','replace')
         summ = ""
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2)"""
         br = "\n\n---\n\n"
