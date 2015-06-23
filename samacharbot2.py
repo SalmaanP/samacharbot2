@@ -9,7 +9,7 @@ import os
 
 blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.com", "snapdeal.com", "ebay.com",
            "blogs.wsj.com", "pbs.twimg.com", "twitter.com", "buzzfeed.com", "ptinews.com", "vine.co", "indigogo.com",
-           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com","youtu.be"}
+           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com","youtu.be","saddahaq.com"}
 blockedid = []
 
 uname=os.environ['uname']
@@ -18,7 +18,7 @@ r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
 r.login(uname, pwd)
 
-subreddit = r.get_subreddit('india')
+subreddit = r.get_subreddit('india+TESTBOTTEST')
 
 while True:
 
