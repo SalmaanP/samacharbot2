@@ -13,7 +13,6 @@ blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.c
 blockedid = []
 
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
-
 # implement oauth soon
 r.login(config.uname, config.passwd)
 
@@ -21,7 +20,7 @@ subreddit = r.get_subreddit('india')
 
 while True:
 
-    submissions = subreddit.get_new(limit=50)
+    submissions = subreddit.get_new(limit=51)
     for submission in submissions:
         print submission.title
         summ = ""
