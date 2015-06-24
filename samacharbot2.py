@@ -16,13 +16,19 @@ uname=os.environ['uname']
 pwd=os.environ['pass']
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
-r.login(uname, pwd)
+r.login("uname", "pass")
 
 subreddit = r.get_subreddit('india+TESTBOTTEST')
 
 while True:
 
-    submissions = subreddit.get_new(limit=51)
+    fo = open("looked.txt", "a+")
+    fo.seek(0, 0)
+    position = fo.tell()
+    str1 = fo.read()
+    fo.seek(position)
+
+    submissions = subreddit.get_new(limit=3)
     for submission in submissions:
         print submission.title.encode('ascii','replace')
         summ = ""
@@ -30,9 +36,9 @@ while True:
         br = "\n\n---\n\n"
         upvotes = int(submission.score)
         if upvotes > 0:
-            if submission.domain not in blocked and submission.id not in blockedid:
+            if submission.domain not in blocked and submission.id not in str1:
                 try:
-                    blockedid.append(submission.id)
+                    fo.write(submission.id+" ")
                     link = submission.url
                     summ_article = smrzr.Summarizer(link)
                     keypoints = summ_article.keypoints
