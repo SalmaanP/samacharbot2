@@ -28,7 +28,7 @@ while True:
     str1 = fo.read()
     fo.seek(position)
 
-    submissions = subreddit.get_new(limit=3)
+    submissions = subreddit.get_new(limit=25)
     for submission in submissions:
         print submission.title.encode('ascii','replace')
         summ = ""
