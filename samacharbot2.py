@@ -12,11 +12,11 @@ blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.c
            "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com","youtu.be","saddahaq.com"}
 blockedid = []
 
-uname=os.environ['uname']
-pwd=os.environ['pass']
+#uname=os.environ['uname']
+#pwd=os.environ['pass']
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
-r.login("uname", "pass")
+r.login("samacharbot2", "prawisverygood")
 
 subreddit = r.get_subreddit('india+TESTBOTTEST')
 
