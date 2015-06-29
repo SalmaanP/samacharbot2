@@ -9,14 +9,14 @@ import os
 
 blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.com", "snapdeal.com", "ebay.com",
            "blogs.wsj.com", "pbs.twimg.com", "twitter.com", "buzzfeed.com", "ptinews.com", "vine.co", "indigogo.com",
-           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com","youtu.be","saddahaq.com"}
+           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com", "youtu.be", "saddahaq.com"}
 blockedid = []
 
-#uname=os.environ['uname']
-#pwd=os.environ['pass']
+uname = os.environ['uname']
+pwd = os.environ['pass']
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
-r.login("samacharbot2", "prawisverygood")
+r.login(uname, pwd)
 
 subreddit = r.get_subreddit('india+TESTBOTTEST')
 
@@ -30,7 +30,8 @@ while True:
 
     submissions = subreddit.get_new(limit=25)
     for submission in submissions:
-        print submission.title.encode('ascii','replace')
+        visited = False
+        print submission.title.encode('ascii', 'replace')
         summ = ""
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2)"""
         br = "\n\n---\n\n"
@@ -38,7 +39,17 @@ while True:
         if upvotes > 0:
             if submission.domain not in blocked and submission.id not in str1:
                 try:
-                    fo.write(submission.id+" ")
+                    fo.write(submission.id + " ")
+
+                    forest_comments = submission.comments
+                    for comment in forest_comments:
+                        if str(comment.author) == 'samacharbot2':
+                            print "Went inside"
+                            visited = True
+
+                    if visited == True:
+                        continue
+
                     link = submission.url
                     summ_article = smrzr.Summarizer(link)
                     keypoints = summ_article.keypoints
