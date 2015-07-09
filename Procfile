@@ -1,1 +1,1 @@
-bot: python samacharbot2.py
+worker: python samacharbot2.py
