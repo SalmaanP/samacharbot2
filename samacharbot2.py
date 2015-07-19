@@ -20,11 +20,11 @@ blockedid = []
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
 # r.login(uname, pwd)
-
+scopes = {u'edit', u'submit', u'read', u'privatemessages', u'identity', u'history'}
 oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
                               app_secret=os.environ['app_secret'],
                               access_token=os.environ['access_token'],
-                              refresh_token=os.environ['refresh_token'], scopes=os.environ['scopes'])
+                              refresh_token=os.environ['refresh_token'], scopes=scopes)
 
 subreddit = r.get_subreddit('india+TESTBOTTEST+indianews')
 
