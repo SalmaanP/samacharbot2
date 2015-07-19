@@ -10,6 +10,6 @@ Uses two summarizing libraries
 
 Uses [Goose](https://github.com/grangier/python-goose) for scraping content.
 
-Thanks to [sr33](https://github.com/sree/OtherNewsSources) for relevant news links idea and implementation
+Thanks to [sr33](https://github.com/sr33/OtherNewsSources) for relevant news links idea and implementation
 
 Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
