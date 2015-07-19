@@ -26,7 +26,7 @@ oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
                               access_token=os.environ['access_token'],
                               refresh_token=os.environ['refresh_token'], scopes=scopes)
 
-subreddit = r.get_subreddit('india+TESTBOTTEST+indianews')
+subreddit = r.get_subreddit('india+TESTBOTTEST')
 
 while True:
 
