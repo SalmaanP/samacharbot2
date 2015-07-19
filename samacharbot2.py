@@ -6,19 +6,27 @@ import praw
 import smrzr
 from altsummary import summary
 import os
+import find_other_news_sources
+import itertools
+from prawoauth2 import PrawOAuth2Mini
 
 blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.com", "snapdeal.com", "ebay.com",
            "blogs.wsj.com", "pbs.twimg.com", "twitter.com", "buzzfeed.com", "ptinews.com", "vine.co", "indigogo.com",
-           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com", "youtu.be", "saddahaq.com"}
+           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com", "youtu.be", "saddahaq.com", "amazon.in"}
 blockedid = []
 
-uname = os.environ['uname']
-pwd = os.environ['pass']
+#uname = os.environ['uname']
+#pwd = os.environ['pass']
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
-r.login(uname, pwd)
+# r.login(uname, pwd)
 
-subreddit = r.get_subreddit('india+TESTBOTTEST')
+oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
+                              app_secret=os.environ['app_secret'],
+                              access_token=os.environ['access_token'],
+                              refresh_token=os.environ['refresh_token'], scopes=os.environ['config.scopes'])
+
+subreddit = r.get_subreddit('india+TESTBOTTEST+indianews')
 
 while True:
 
@@ -30,10 +38,12 @@ while True:
 
     submissions = subreddit.get_new(limit=25)
     for submission in submissions:
+        oauth_helper.refresh()
         visited = False
-        print submission.title.encode('ascii', 'replace')
+        #print submission.title.encode('ascii', 'replace')
         summ = ""
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2)"""
+        relevant_message = "\n\nHere are some relevant links for your viewing pleasure:^credits ^to ^u-sr33 ^^still ^^beta, ^^looking ^^for ^^feedback"
         br = "\n\n---\n\n"
         upvotes = int(submission.score)
         if upvotes > 0:
@@ -44,7 +54,7 @@ while True:
                     forest_comments = submission.comments
                     for comment in forest_comments:
                         if str(comment.author) == 'samacharbot2':
-                            print "Went inside"
+                            #print "Went inside"
                             visited = True
 
                     if visited == True:
@@ -57,9 +67,38 @@ while True:
                     message = "\n\n> * ".join(keypoints)
                     message = "> * " + message
 
+                    relevant_list = find_other_news_sources.find_other_news_sources(url=link)
+                    relevant_title = []
+                    relevant_link = []
+                    temp_alink = ""
+                    temp_blink = ""
+                    for a_link in relevant_list:
+                        relevant_title.append(a_link[0])
+                        relevant_link.append(a_link[1])
+
+                    skip = 1
+                    for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
+                        if a_link is None:
+                            a_link = "This"
+                        if b_link is None:
+                            continue
+                        if temp_blink == b_link:
+                            continue
+                        try:
+                            print "inside normal"
+                            relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
+                            temp_alink = a_link
+                            temp_blink = b_link
+                        except Exception as e:
+                            print e
+
+
+                    #relevant_message = relevant_message + "---"
+
+
                     if len(message) > 100:
                         try:
-                            submission.add_comment(summ + br + message.encode('ascii', 'replace') + br + endmsg)
+                            submission.add_comment(summ + br + message.encode('ascii', 'replace') + br + relevant_message + br + endmsg)
                         except Exception as e:
                             print "1Unknown ERROR\n"
                             print type(e)
@@ -69,7 +108,7 @@ while True:
                             print "\n"
                             continue
 
-                    print "Done normally"
+                    #print "Done normally"
 
                 except smrzr.ArticleExtractionFail as a:
                     print "Article Extraction Failed"
@@ -95,10 +134,39 @@ while True:
                     keypoints = summary(text)
                     title = article.title
 
+                    relevant_list = find_other_news_sources.find_other_news_sources(url=link)
+                    relevant_title = []
+                    relevant_link = []
+                    temp_alink = ""
+                    temp_blink = ""
+                    for a_link in relevant_list:
+                        relevant_title.append(a_link[0])
+                        relevant_link.append(a_link[1])
+
+                    skip = 1
+                    for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
+                        if a_link is None:
+                            a_link = "This"
+                        if b_link is None:
+                            continue
+                        if temp_blink == b_link:
+                            continue
+                        try:
+                            print "inside assertion"
+                            relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
+                            temp_alink = a_link
+                            temp_blink = b_link
+                        except Exception as e:
+                            print e
+
+
+                    #relevant_message = relevant_message + "---"
+
+
                     if len(keypoints) > 100:
                         try:
                             # print keypoints
-                            submission.add_comment(title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
+                            submission.add_comment(title + br + str(keypoints).encode('ascii', 'replace') + br + relevant_message + br + endmsg)
 
                         except Exception as e:
                             print "3Unknown ERROR\n"
@@ -120,26 +188,26 @@ while True:
                     continue
 
             else:
-                print "Id blocked or domain blocked"
+                #print "Id blocked or domain blocked"
 
                 unread = r.get_unread(limit=None)
-                print "here"
+                #print "here"
                 for msg in unread:
-                    print msg.body
+
                     if msg.body.lower() == 'delete':
                         try:
-                            print "found one"
+                            #print "found one"
                             idd = msg.id
                             idd = 't1_' + idd
-                            print idd
+                            #print idd
                             comment = r.get_info(thing_id=idd)
                             parentid = comment.parent_id
-                            print parentid
+                            #print parentid
                             comment_parent = r.get_info(thing_id=parentid)
                             sublink = comment_parent.link_id
                             author1 = r.get_info(thing_id=sublink)
-                            print author1.author
-                            print msg.author.name
+                            #print author1.author
+                            #print msg.author.name
                             if (str(msg.author.name) == str(author1.author)):
                                 comment_parent.delete()
                                 print "deletedd"
