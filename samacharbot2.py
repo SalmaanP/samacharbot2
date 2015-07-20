@@ -68,32 +68,46 @@ while True:
                     message = "> * " + message
 
                     relevant_list = find_other_news_sources.find_other_news_sources(url=link)
-                    relevant_title = []
-                    relevant_link = []
-                    temp_alink = ""
-                    temp_blink = ""
-                    for a_link in relevant_list:
-                        relevant_title.append(a_link[0])
-                        relevant_link.append(a_link[1])
+                    if relevant_list is None:
+                        if len(message) > 100:
+                            try:
+                                # print keypoints
+                                submission.add_comment(summ + br + message.encode('ascii', 'replace') + endmsg)
 
-                    skip = 1
-                    for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
-                        if a_link is None:
-                            a_link = "This"
-                        if b_link is None:
-                            continue
-                        if temp_blink == b_link:
-                            continue
-                        try:
-                            print "inside normal"
-                            relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
-                            temp_alink = a_link
-                            temp_blink = b_link
-                        except Exception as e:
-                            print e
+                            except Exception as e:
+                                print "3Unknown ERROR\n"
+                                print type(e)
+                                print e.args
+                                print e
+                                print submission.id
+                                print "\n"
+                                continue
+                    else:
+                        relevant_title = []
+                        relevant_link = []
+                        temp_alink = ""
+                        temp_blink = ""
+                        for a_link in relevant_list:
+                            relevant_title.append(a_link[0])
+                            relevant_link.append(a_link[1])
+
+                        for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
+                            if a_link is None:
+                                a_link = "This"
+                            if b_link is None:
+                                continue
+                            if temp_blink == b_link:
+                                continue
+                            try:
+                                print "inside normal"
+                                relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
+                                temp_alink = a_link
+                                temp_blink = b_link
+                            except Exception as e:
+                                print e
 
 
-                    #relevant_message = relevant_message + "---"
+                        #relevant_message = relevant_message + "---"
 
 
                     if len(message) > 100:
@@ -135,32 +149,46 @@ while True:
                     title = article.title
 
                     relevant_list = find_other_news_sources.find_other_news_sources(url=link)
-                    relevant_title = []
-                    relevant_link = []
-                    temp_alink = ""
-                    temp_blink = ""
-                    for a_link in relevant_list:
-                        relevant_title.append(a_link[0])
-                        relevant_link.append(a_link[1])
+                    if relevant_list is None:
+                        if len(keypoints) > 100:
+                            try:
+                                # print keypoints
+                                submission.add_comment(title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
 
-                    skip = 1
-                    for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
-                        if a_link is None:
-                            a_link = "This"
-                        if b_link is None:
-                            continue
-                        if temp_blink == b_link:
-                            continue
-                        try:
-                            print "inside assertion"
-                            relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
-                            temp_alink = a_link
-                            temp_blink = b_link
-                        except Exception as e:
-                            print e
+                            except Exception as e:
+                                print "3Unknown ERROR\n"
+                                print type(e)
+                                print e.args
+                                print e
+                                print submission.id
+                                print "\n"
+                                continue
+                    else:
+                        relevant_title = []
+                        relevant_link = []
+                        temp_alink = ""
+                        temp_blink = ""
+                        for a_link in relevant_list:
+                            relevant_title.append(a_link[0])
+                            relevant_link.append(a_link[1])
+
+                        for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
+                            if a_link is None:
+                                a_link = "This"
+                            if b_link is None:
+                                continue
+                            if temp_blink == b_link:
+                                continue
+                            try:
+                                print "inside assertion"
+                                relevant_message = relevant_message + "\n\n" + "> * " + "[" + a_link + "]" + "(" + b_link + ")"
+                                temp_alink = a_link
+                                temp_blink = b_link
+                            except Exception as e:
+                                print e
 
 
-                    #relevant_message = relevant_message + "---"
+                        #relevant_message = relevant_message + "---"
 
 
                     if len(keypoints) > 100:
