@@ -51,7 +51,7 @@ def find_other_news_sources(url=None, title=None):
             print "\n"
             continue
 
-        if count is 5:
+        if count is 4:
             break
 
     return new_links
