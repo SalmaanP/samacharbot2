@@ -20,5 +20,7 @@ blocked = {"youtube.com",
            "nytimes.com",
            "youtu.be",
            "saddahaq.com",
-           "amazon.in"
+           "amazon.in",
+           "liveleak.com",
+           "m.liveleak.com"
 }
