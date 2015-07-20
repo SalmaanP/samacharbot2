@@ -23,7 +23,7 @@ def find_other_news_sources(url=None, title=None):
     if not title:
         title = get_title(url=url)
     try:
-        #parent_url_exclude = '-site:' + url
+        # parent_url_exclude = '-site:' + url
         #google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + parent_url_exclude + '&tbm=nws'
         google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + '&tbm=nws'
         google_news_search_tree = get_page_tree(url=google_news_search_url)
@@ -51,8 +51,7 @@ def find_other_news_sources(url=None, title=None):
             print "\n"
             continue
 
-        if count is 4:
+        if count is 5:
             break
-
 
     return new_links

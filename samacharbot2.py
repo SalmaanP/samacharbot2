@@ -94,7 +94,7 @@ while True:
                         for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
                             if a_link is None:
                                 a_link = "This"
-                            if b_link is None:
+                            if b_link is None or b_link == link:
                                 continue
                             if temp_blink == b_link:
                                 continue
@@ -176,7 +176,7 @@ while True:
                         for (a_link, b_link) in itertools.izip(relevant_title, relevant_link):
                             if a_link is None:
                                 a_link = "This"
-                            if b_link is None:
+                            if b_link is None or b_link == link:
                                 continue
                             if temp_blink == b_link:
                                 continue
