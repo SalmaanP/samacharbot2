@@ -9,13 +9,11 @@ import os
 import find_other_news_sources
 import itertools
 from prawoauth2 import PrawOAuth2Mini
+import blacklist
 
-blocked = {"youtube.com", "imgur.com", "i.imgur.com", "imgflip.com", "flipkart.com", "snapdeal.com", "ebay.com",
-           "blogs.wsj.com", "pbs.twimg.com", "twitter.com", "buzzfeed.com", "ptinews.com", "vine.co", "indigogo.com",
-           "en.wikipedia.com", "self.india", "niticentral.com", "nytimes.com", "youtu.be", "saddahaq.com", "amazon.in"}
 blockedid = []
 
-#uname = os.environ['uname']
+# uname = os.environ['uname']
 #pwd = os.environ['pass']
 r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon
@@ -43,11 +41,13 @@ while True:
         #print submission.title.encode('ascii', 'replace')
         summ = ""
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2)"""
+        help = " ^See ^how ^you ^can ^help! ^Visit ^the ^source ^and ^check ^out ^the ^Readme"
+        endmsg = endmsg + help
         relevant_message = "\n\nHere are some relevant links for your viewing pleasure:^credits ^to ^u-sr33 ^^still ^^beta, ^^looking ^^for ^^feedback"
         br = "\n\n---\n\n"
         upvotes = int(submission.score)
         if upvotes > 0:
-            if submission.domain not in blocked and submission.id not in str1:
+            if submission.domain not in blacklist.blocked and submission.id not in str1:
                 try:
                     fo.write(submission.id + " ")
 
@@ -107,12 +107,12 @@ while True:
                                 print e
 
 
-                        #relevant_message = relevant_message + "---"
-
+                                #relevant_message = relevant_message + "---"
 
                     if len(message) > 100:
                         try:
-                            submission.add_comment(summ + br + message.encode('ascii', 'replace') + br + relevant_message + br + endmsg)
+                            submission.add_comment(
+                                summ + br + message.encode('ascii', 'replace') + br + relevant_message + br + endmsg)
                         except Exception as e:
                             print "1Unknown ERROR\n"
                             print type(e)
@@ -122,7 +122,7 @@ while True:
                             print "\n"
                             continue
 
-                    #print "Done normally"
+                            #print "Done normally"
 
                 except smrzr.ArticleExtractionFail as a:
                     print "Article Extraction Failed"
@@ -153,7 +153,8 @@ while True:
                         if len(keypoints) > 100:
                             try:
                                 # print keypoints
-                                submission.add_comment(title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
+                                submission.add_comment(
+                                    title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
 
                             except Exception as e:
                                 print "3Unknown ERROR\n"
@@ -188,13 +189,13 @@ while True:
                                 print e
 
 
-                        #relevant_message = relevant_message + "---"
-
+                                #relevant_message = relevant_message + "---"
 
                     if len(keypoints) > 100:
                         try:
                             # print keypoints
-                            submission.add_comment(title + br + str(keypoints).encode('ascii', 'replace') + br + relevant_message + br + endmsg)
+                            submission.add_comment(title + br + str(keypoints).encode('ascii',
+                                                                                      'replace') + br + relevant_message + br + endmsg)
 
                         except Exception as e:
                             print "3Unknown ERROR\n"
