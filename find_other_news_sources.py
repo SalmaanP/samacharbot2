@@ -23,9 +23,9 @@ def find_other_news_sources(url=None, title=None):
     if not title:
         title = get_title(url=url)
     try:
-        #parent_url_exclude = '-site:' + url
-        #google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + parent_url_exclude + '&tbm=nws'
-        google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + '&tbm=nws'
+        parent_url_exclude = '-site:' + url
+        google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + parent_url_exclude + '&tbm=nws'
+        #google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + '&tbm=nws'
         google_news_search_tree = get_page_tree(url=google_news_search_url)
         other_news_sources_links = [a_link.replace(forwarding_identifier, '').split('&')[0] for a_link in
                                     google_news_search_tree.xpath('//a//@href') if forwarding_identifier in a_link]
