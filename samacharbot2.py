@@ -68,7 +68,7 @@ while True:
                     message = "> * " + message
 
                     relevant_list = find_other_news_sources.find_other_news_sources(url=link)
-                    if relevant_list is None:
+                    if relevant_list is None or len(relevant_list) == 0:
                         if len(message) > 100:
                             try:
                                 # print keypoints
@@ -149,7 +149,7 @@ while True:
                     title = article.title
 
                     relevant_list = find_other_news_sources.find_other_news_sources(url=link)
-                    if relevant_list is None:
+                    if relevant_list is None or len(relevant_list) == 0:
                         if len(keypoints) > 100:
                             try:
                                 # print keypoints
