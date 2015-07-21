@@ -9,7 +9,7 @@ g = Goose()
 
 def get_page_tree(url=None):
     page = requests.get(url=url, verify=False)
-    return html.fromstring(page.text)
+    return html.fromstring(page.content)
 
 
 def get_title(url=None):

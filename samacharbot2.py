@@ -10,6 +10,7 @@ import find_other_news_sources
 import itertools
 from prawoauth2 import PrawOAuth2Mini
 import blacklist
+from time import sleep
 
 blockedid = []
 
@@ -44,7 +45,12 @@ while True:
 
     # get new submissions and go through them.
 
-    submissions = subreddit.get_new(limit=25)
+    try:
+        submissions = subreddit.get_new(limit=25)
+    except praw.errors.HTTPException as h:
+        sleep(300)
+        continue
+
     for submission in submissions:
 
         # Refresh auth token. expires 60 min.
