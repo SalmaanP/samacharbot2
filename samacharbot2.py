@@ -15,11 +15,14 @@ blockedid = []
 
 # Config Stuff
 
+r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
+
+# implement oauth soon ---done
+
 # uname = os.environ['uname']
 # pwd = os.environ['pass']
-r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
-# implement oauth soon ---done
 # r.login(uname, pwd)
+
 scopes = {u'edit', u'submit', u'read', u'privatemessages', u'identity', u'history'}
 oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
                               app_secret=os.environ['app_secret'],
@@ -50,7 +53,7 @@ while True:
         # variable to keep track of cases where bot is restarted and file doesnt have previous submission data.
         visited = False
 
-        #print submission.title.encode('ascii', 'replace')
+        #print submission.title.encode('ascii', 'ignore')
 
         # message templates for 1st summary method
         summ = ""
@@ -63,7 +66,7 @@ while True:
         # if want to implement score based posts in future
         upvotes = int(submission.score)
 
-        if upvotes > 0:
+        if upvotes >= 0:
 
             # check if post not blocked by domain or already looked
             if submission.domain not in blacklist.blocked and submission.id not in str1:
@@ -79,7 +82,6 @@ while True:
 
                     for comment in forest_comments:
                         if str(comment.author) == 'samacharbot2':
-                            #print "Went inside"
                             visited = True
 
                     # skip post if posted already
@@ -145,9 +147,6 @@ while True:
                             except Exception as e:
                                 print e
 
-
-                                #relevant_message = relevant_message + "---"
-
                     # post comment if summary is substantial
                     if len(message) > 150:
                         try:
@@ -161,8 +160,6 @@ while True:
                             print submission.id
                             print "\n"
                             continue
-
-                            #print "Done normally"
 
                 except smrzr.ArticleExtractionFail as a:
                     print "Article Extraction Failed"
@@ -264,11 +261,9 @@ while True:
                     continue
 
             else:
-                #print "Id blocked or domain blocked"
 
                 # if no more posts to summarize, go through unread messages and see if any posts to delete.
                 unread = r.get_unread(limit=None)
-                #print "here"
                 for msg in unread:
 
                     # only works if the word delete is posted as it is, without edit.
@@ -276,27 +271,24 @@ while True:
                         try:
 
                             # get comment id from message.
-                            #print "found one"
                             idd = msg.id
                             idd = 't1_' + idd
-                            #print idd
 
                             # find comment from id
                             comment = r.get_info(thing_id=idd)
 
                             # find parent comment i.e samachar bot comment
                             parentid = comment.parent_id
-                            #print parentid
                             comment_parent = r.get_info(thing_id=parentid)
+
+                            # get submission author through submission link id
                             sublink = comment_parent.link_id
                             author1 = r.get_info(thing_id=sublink)
-                            #print author1.author
-                            #print msg.author.name
 
                             # verify author of message is OP, then delete message and mark unread.
                             if (str(msg.author.name) == str(author1.author)):
                                 comment_parent.delete()
-                                print "deletedd"
+                                print "deleted"
 
                                 msg.mark_as_read()
                             else:
