@@ -13,15 +13,25 @@ def get_page_tree(url=None):
 
 
 def get_title(url=None):
-    tree = get_page_tree(url=url)
-    return tree.xpath('//title//text()')[0].strip().split(' -')[0]
+    try:
+        article = g.extract(url=link)
+        return article.title
+    except Exception as e:
+        try:
+            tree = get_page_tree(url=url)
+            return tree.xpath('//title//text()')[0].strip().split(' -')[0]
+        except Exception as b:
+            return None
 
 
 def find_other_news_sources(url=None, title=None):
     # Google forwards the url using <google_domain>/url?q=<actual_link>. This might change over time
     forwarding_identifier = '/url?q='
     if not title:
-        title = get_title(url=url)
+        try:
+            title = get_title(url=url)
+        except Exception as e:
+            return None
     try:
         # parent_url_exclude = '-site:' + url
         #google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + parent_url_exclude + '&tbm=nws'
