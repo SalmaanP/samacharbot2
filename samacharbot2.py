@@ -104,7 +104,7 @@ while True:
                         if len(message) > 100:
                             try:
                                 # print keypoints
-                                submission.add_comment(summ + br + message.encode('ascii', 'replace') + br + endmsg)
+                                submission.add_comment(summ + br + message.encode('ascii', 'ignore') + br + endmsg)
                                 continue
 
                             except Exception as e:
@@ -152,7 +152,7 @@ while True:
                     if len(message) > 150:
                         try:
                             submission.add_comment(
-                                summ + br + message.encode('ascii', 'replace') + br + relevant_message + br + endmsg)
+                                summ + br + message.encode('ascii', 'ignore') + br + relevant_message + br + endmsg)
                         except Exception as e:
                             print "1Unknown ERROR\n"
                             print type(e)
@@ -200,7 +200,7 @@ while True:
                             try:
                                 # print keypoints
                                 submission.add_comment(
-                                    title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
+                                    title + br + str(keypoints).encode('ascii', 'ignore') + br + endmsg)
                                 continue
 
                             except Exception as e:
@@ -242,7 +242,7 @@ while True:
                         try:
                             # print keypoints
                             submission.add_comment(title + br + str(keypoints).encode('ascii',
-                                                                                      'replace') + br + relevant_message + br + endmsg)
+                                                                                      'ignore') + br + relevant_message + br + endmsg)
 
                         except Exception as e:
                             print "3Unknown ERROR\n"
