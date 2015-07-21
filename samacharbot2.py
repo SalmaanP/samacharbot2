@@ -104,7 +104,8 @@ while True:
                         if len(message) > 100:
                             try:
                                 # print keypoints
-                                submission.add_comment(summ + br + message.encode('ascii', 'replace') + endmsg)
+                                submission.add_comment(summ + br + message.encode('ascii', 'replace') + br + endmsg)
+                                continue
 
                             except Exception as e:
                                 print "3Unknown ERROR\n"
@@ -200,6 +201,7 @@ while True:
                                 # print keypoints
                                 submission.add_comment(
                                     title + br + str(keypoints).encode('ascii', 'replace') + br + endmsg)
+                                continue
 
                             except Exception as e:
                                 print "3Unknown ERROR\n"
