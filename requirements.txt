@@ -1,5 +1,5 @@
 goose-extractor==1.0.22
-praw==3.0.0
+praw==3.1.0
 git+git://github.com/networkx/networkx.git
 numpy==1.8.1
 scipy==0.14.0
