@@ -66,7 +66,7 @@ while True:
         endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
         help = " ^See ^how ^you ^can ^help! ^Visit ^the ^source ^and ^check ^out ^the ^Readme"
         endmsg = endmsg + help
-        relevant_message = "\n\nHere are some relevant links for your viewing pleasure:^credits ^to ^u-sr33"
+        relevant_message = "\n\nHere are some relevant news items:^credits ^to ^u-sr33"
         br = "\n\n---\n\n"
 
         # if want to implement score based posts in future
