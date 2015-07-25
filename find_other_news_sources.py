@@ -35,7 +35,7 @@ def find_other_news_sources(url=None, title=None):
     try:
         # parent_url_exclude = '-site:' + url
         #google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + parent_url_exclude + '&tbm=nws'
-        google_news_search_url = 'http://www.google.com/search?q=' + urllib2.quote(title) + '&tbm=nws'
+        google_news_search_url = 'http://www.google.co.in/search?q=' + urllib2.quote(title) + '&tbm=nws'
         google_news_search_tree = get_page_tree(url=google_news_search_url)
         other_news_sources_links = [a_link.replace(forwarding_identifier, '').split('&')[0] for a_link in
                                     google_news_search_tree.xpath('//a//@href') if forwarding_identifier in a_link]
