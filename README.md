@@ -16,8 +16,8 @@ Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
 
 #Contribute
 
-Help me in identifying websites which break the bot which provide summaries like "Javascript is not enabled" or other such messages.
+Help me in identifying websites which break the bot which provide summaries like "Javascript is not enabled" or "Email not sent" or other such messages.
 
-Fork, edit the blacklist file with the domain name and send a pull request!
+Fork, edit the blacklist file by appending domain name (you can check this by reading what's written next to the reddit title in brackets) to it and send a pull request!
 
 Thanks!
