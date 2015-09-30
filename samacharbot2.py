@@ -38,10 +38,8 @@ while True:
     # put pointer at start, then reads the file to string and then puts the pointer back at the end.
 
     fo = open("looked.txt", "a+")
-    fo.seek(0, 0)
-    position = fo.tell()
     str1 = fo.read()
-    fo.seek(position)
+
 
     # get new submissions and go through them.
 
