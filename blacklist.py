@@ -24,4 +24,5 @@ blocked = {"youtube.com",
            "liveleak.com",
            "m.liveleak.com"
            "vid.me"
+           "github.com"
 }
