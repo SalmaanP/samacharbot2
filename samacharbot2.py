@@ -20,15 +20,16 @@ r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 
 # implement oauth soon ---done
 
-# uname = os.environ['uname']
-# pwd = os.environ['pass']
-# r.login(uname, pwd)
+
+uname = os.environ['uname']
+pwd = os.environ['pass']
+r.login(uname, pwd)
 
 scopes = {u'edit', u'submit', u'read', u'privatemessages', u'identity', u'history'}
 oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
-                              app_secret=os.environ['app_secret'],
-                              access_token=os.environ['access_token'],
-                              refresh_token=os.environ['refresh_token'], scopes=scopes)
+                             app_secret=os.environ['app_secret'],
+                             access_token=os.environ['access_token'],
+                             refresh_token=os.environ['refresh_token'], scopes=scopes)
 
 subreddit = r.get_subreddit('india+TESTBOTTEST')
 
@@ -38,7 +39,10 @@ while True:
     # put pointer at start, then reads the file to string and then puts the pointer back at the end.
 
     fo = open("looked.txt", "a+")
+    position=fo.tell()
+    fo.seek(0,0)
     str1 = fo.read()
+    fo.seek(position)
 
 
     # get new submissions and go through them.
@@ -61,7 +65,8 @@ while True:
 
         # message templates for 1st summary method
         summ = ""
-        endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
+        #endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
+        endmsg = """^I'm ^a ^bot ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
         help = " ^Did ^I ^just ^break? ^See ^how ^you ^can ^help! ^Visit ^the ^source ^and ^check ^out ^the ^Readme"
         endmsg = endmsg + help
         relevant_message = "\n\nHere are some other news items:^credits ^to ^u-sr33"
