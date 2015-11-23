@@ -25,4 +25,7 @@ blocked = {"youtube.com",
            "m.liveleak.com"
            "vid.me"
            "github.com"
+           "streamable.com"
+           "reddit.com"
+           "np.reddit.com"
 }
