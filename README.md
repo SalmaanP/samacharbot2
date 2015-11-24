@@ -14,6 +14,10 @@ Thanks to [sr33](https://github.com/sr33/OtherNewsSources) for relevant news lin
 
 Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
 
+# Code
+
+The main files are samacharbot2.py and blacklist.py, ignore the rest, they are either config files for heroku or files for testing.
+
 #Contribute
 
 Help me in identifying websites which break the bot which provide summaries like "Javascript is not enabled" or "Email not sent" or other such messages.
