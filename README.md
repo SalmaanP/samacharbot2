@@ -22,6 +22,6 @@ The main files are [samacharbot2.py](https://github.com/HunkDivine/samacharbot2/
 
 Help me in identifying websites which break the bot which provide summaries like "Javascript is not enabled" or "Email not sent" or other such messages.
 
-Fork, edit the blacklist file by appending domain name (you can check this by reading what's written next to the reddit title in brackets) to it and send a pull request!
+Fork, edit the [blacklist file](https://github.com/HunkDivine/samacharbot2/blob/master/blacklist.py) by appending domain name (you can check this by reading what's written next to the reddit title in brackets) to it and send a pull request!
 
 Thanks!
