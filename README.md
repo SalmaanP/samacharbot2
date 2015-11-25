@@ -16,7 +16,7 @@ Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
 
 # Code
 
-The main files are samacharbot2.py and blacklist.py, ignore the rest, they are either config files for heroku or files for testing.
+The main files are [samacharbot2.py](https://github.com/HunkDivine/samacharbot2/blob/master/samacharbot2.py), [altsummary.py](https://github.com/HunkDivine/samacharbot2/blob/master/altsummary.py) and [blacklist.py](https://github.com/HunkDivine/samacharbot2/blob/master/blacklist.py), ignore the rest, they are either config files for heroku or files for testing.
 
 #Contribute
 
