@@ -22,10 +22,10 @@ blocked = {"youtube.com",
            "saddahaq.com",
            "amazon.in",
            "liveleak.com",
-           "m.liveleak.com"
-           "vid.me"
-           "github.com"
-           "streamable.com"
-           "reddit.com"
+           "m.liveleak.com",
+           "vid.me",
+           "github.com",
+           "streamable.com",
+           "reddit.com",
            "np.reddit.com"
 }
