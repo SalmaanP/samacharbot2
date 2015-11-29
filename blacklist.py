@@ -27,5 +27,6 @@ blocked = {"youtube.com",
            "github.com",
            "streamable.com",
            "reddit.com",
-           "np.reddit.com"
+           "np.reddit.com",
+           "dropbox.com"
 }
