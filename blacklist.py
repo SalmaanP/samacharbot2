@@ -1,6 +1,7 @@
 __author__ = 'salmaan'
 
 blocked = {"youtube.com",
+           "m.youtube.com",
            "imgur.com",
            "i.imgur.com",
            "imgflip.com",
