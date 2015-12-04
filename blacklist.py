@@ -29,5 +29,6 @@ blocked = {"youtube.com",
            "streamable.com",
            "reddit.com",
            "np.reddit.com",
-           "dropbox.com"
+           "dropbox.com",
+           "raiot.in"
 }
