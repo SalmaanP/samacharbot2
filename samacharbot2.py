@@ -21,9 +21,9 @@ r = praw.Reddit(user_agent="Samachar Bot for /r/india by /u/sallurocks")
 # implement oauth soon ---done
 
 
-uname = os.environ['uname']
-pwd = os.environ['pass']
-r.login(uname, pwd)
+#uname = os.environ['uname']
+#pwd = os.environ['pass']
+#r.login(uname, pwd)
 
 scopes = {u'edit', u'submit', u'read', u'privatemessages', u'identity', u'history'}
 oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
