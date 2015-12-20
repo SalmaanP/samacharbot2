@@ -47,5 +47,5 @@ deletemsg.pyc
 .pyc
 ignore
 *.pyc
-.idea
-idea
+.idea/
+deletemsg.pyc
