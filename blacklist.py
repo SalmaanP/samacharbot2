@@ -31,5 +31,6 @@ blocked = {"youtube.com",
            "np.reddit.com",
            "dropbox.com",
            "raiot.in",
-           "socialblade.com"
+           "socialblade.com",
+           "fortune.com"
 }

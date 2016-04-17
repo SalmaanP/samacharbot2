@@ -270,48 +270,48 @@ while True:
                     continue
 
 
-            # else:
-            #
-            #     # if no more posts to summarize, go through unread messages and see if any posts to delete.
-            #     unread = r.get_unread(limit=None)
-            #     for msg in unread:
-            #
-            #         # only works if the word delete is posted as it is, without edit.
-            #         if msg.body.lower() == 'delete':
-            #             try:
-            #
-            #                 # get comment id from message.
-            #                 idd = msg.id
-            #                 idd = 't1_' + idd
-            #
-            #                 # find comment from id
-            #                 comment = r.get_info(thing_id=idd)
-            #
-            #                 # find parent comment i.e samachar bot comment
-            #                 parentid = comment.parent_id
-            #                 comment_parent = r.get_info(thing_id=parentid)
-            #
-            #                 # get submission author through submission link id
-            #                 sublink = comment_parent.link_id
-            #                 author1 = r.get_info(thing_id=sublink)
-            #
-            #                 # verify author of message is OP, then delete message and mark unread.
-            #                 if (str(msg.author.name) == str(author1.author)):
-            #                     comment_parent.delete()
-            #                     print "deleted"
-            #
-            #                     msg.mark_as_read()
-            #                 else:
-            #
-            #                     msg.mark_as_read()
-            #                 continue
-            #             except Exception as e:
-            #                 print "5Unknown ERROR"
-            #                 print type(e)
-            #                 print e.args
-            #                 print e
-            #                 print "\n"
-            #                 # continue
-            #                 msg.mark_as_read()
-            #                 continue
-            #     continue
+            else:
+
+                # if no more posts to summarize, go through unread messages and see if any posts to delete.
+                unread = r.get_unread(limit=None)
+                for msg in unread:
+
+                    # only works if the word delete is posted as it is, without edit.
+                    if msg.body.lower() == 'delete':
+                        try:
+
+                            # get comment id from message.
+                            idd = msg.id
+                            idd = 't1_' + idd
+
+                            # find comment from id
+                            comment = r.get_info(thing_id=idd)
+
+                            # find parent comment i.e samachar bot comment
+                            parentid = comment.parent_id
+                            comment_parent = r.get_info(thing_id=parentid)
+
+                            # get submission author through submission link id
+                            sublink = comment_parent.link_id
+                            author1 = r.get_info(thing_id=sublink)
+
+                            # verify author of message is OP, then delete message and mark unread.
+                            if (str(msg.author.name) == str(author1.author)):
+                                comment_parent.delete()
+                                print "deleted"
+
+                                msg.mark_as_read()
+                            else:
+
+                                msg.mark_as_read()
+                            continue
+                        except Exception as e:
+                            print "5Unknown ERROR"
+                            print type(e)
+                            print e.args
+                            print e
+                            print "\n"
+                            # continue
+                            msg.mark_as_read()
+                            continue
+                continue
