@@ -65,8 +65,8 @@ while True:
 
         # message templates for 1st summary method
         summ = ""
-        #endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
-        endmsg = """^I'm ^a ^bot ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
+        endmsg = """^I'm ^a ^bot ^| ^OP ^can ^reply ^with ^"delete" ^to ^remove ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
+        # endmsg = """^I'm ^a ^bot ^| [^Message ^Creator](http://www.reddit.com/message/compose/?to=sallurocks) ^| [^Source](https://github.com/hunkdivine/samacharbot2) ^|"""
         help = " ^Did ^I ^just ^break? ^See ^how ^you ^can ^help! ^Visit ^the ^source ^and ^check ^out ^the ^Readme"
         endmsg = endmsg + help
         relevant_message = "\n\nHere are some other news items:^credits ^to ^u-sr33"
