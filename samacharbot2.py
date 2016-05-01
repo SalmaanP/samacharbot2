@@ -31,7 +31,7 @@ oauth_helper = PrawOAuth2Mini(r, app_key=os.environ['app_key'],
                              access_token=os.environ['access_token'],
                              refresh_token=os.environ['refresh_token'], scopes=scopes)
 
-subreddit = r.get_subreddit('india+TESTBOTTEST+TILinIndia+willis7737_news')
+subreddit = r.get_subreddit('india+TESTBOTTEST+TILinIndia+willis7737_news+freesoftware+parabola+libreboot')
 
 while True:
 
@@ -48,7 +48,7 @@ while True:
     # get new submissions and go through them.
 
     try:
-        submissions = subreddit.get_new(limit=25)
+        submissions = subreddit.get_new(limit=50)
     except praw.errors.HTTPException as h:
         sleep(300)
         continue
