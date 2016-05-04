@@ -78,7 +78,7 @@ while True:
         if upvotes >= 0:
 
             # check if post not blocked by domain or already looked
-            if submission.domain not in blacklist.blocked and submission.id not in str1:
+            if str(submission.domain) == str("self."+str(submission.subreddit)) and submission.domain not in blacklist.blocked and submission.id not in str1:
                 try:
                     # write submission  id to file to not post again
                     fo.write(submission.id + " ")
