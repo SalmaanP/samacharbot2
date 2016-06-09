@@ -25,3 +25,18 @@ Help me in identifying websites which break the bot which provide summaries like
 Fork, edit the [blacklist file](https://github.com/HunkDivine/samacharbot2/blob/master/blacklist.py) by appending domain name (you can check this by reading what's written next to the reddit title in brackets) to it and send a pull request!
 
 Thanks!
+
+
+#Subreddits
+
+Currently working on the following subreddits:
+
+india
+mumbai
+TILinIndia
+willis7737_news
+freesoftware
+parabola
+libreboot
+TESTBOTTEST
+
