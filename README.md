@@ -31,18 +31,18 @@ Thanks!
 
 Currently working on the following subreddits:
 
-*india
+* india
 
-*mumbai
+* mumbai
 
-*TILinIndia
+* TILinIndia
 
-*willis7737_news
+* willis7737_news
 
-*freesoftware
+* freesoftware
 
-*parabola
+* parabola
 
-*libreboot
+* libreboot
 
-*TESTBOTTEST
+* TESTBOTTEST
