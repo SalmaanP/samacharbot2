@@ -46,3 +46,5 @@ Currently working on the following subreddits:
 * libreboot
 
 * TESTBOTTEST
+
+* UpliftingKhabre
