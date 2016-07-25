@@ -36,4 +36,5 @@ blocked = {"youtube.com",
            "soundcloud.com",
            "self.mumbai",
 		   "independent.co.uk",
+           "theatlantic.com",
 }
