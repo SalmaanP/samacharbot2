@@ -45,6 +45,7 @@ def addSubmission(file_handler, submission):
 def isPosted(comments):
     for comment in comments:
         if str(comment.author) == 'samacharbot2':
+            print "Already posted"
             return True
         else:
             return False
@@ -73,8 +74,10 @@ def processSummarization(file_handler, submission, method):
 
     if method == 'smrzr':
         summ, keypoints, article_text = summarizeSMRZR(submission.url)
+        print "Finished " + str(submission.id) + " with smrzr"
     elif method == 'other':
         summ, keypoints, article_text = summarizeOther(submission.url)
+        print "Finished " + str(submission.id) + " with other"
     else:
         return
 
@@ -200,7 +203,7 @@ def checkConditions(submission, ids):
            and submission.domain not in blacklist.blocked and submission.id not in ids
 
 
-def process():
+def start():
 
     r, oauth_helper, subreddit = init()
 
@@ -213,15 +216,19 @@ def process():
             sleep(300)
             continue
 
+        nothing = True
         for submission in submissions:
 
+            print "Working on - " + str(submission.id),
             fo, ids = postTracker()
             oauth_helper.refresh()
 
             if int(submission.score) >= 0:
 
                 if checkConditions(submission, ids):
+                    nothing = False
                     try:
+
                         processSummarization(fo, submission, 'smrzr')
 
                     except smrzr.ArticleExtractionFail:
@@ -245,7 +252,15 @@ def process():
                     fo.close()
 
                 else:
+                    print "Nothing to do, checking messages"
                     # if no more posts to summarize, go through unread messages and see if any posts to delete.
                     checkDelete(r)
-                    break
-process()
+                    continue
+
+        if nothing:
+            print "Nothing to do, sleeping for 2 minutes"
+            sleep(10)
+
+
+if __name__ == '__main__':
+    start()
