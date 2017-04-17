@@ -45,7 +45,6 @@ def addSubmission(file_handler, submission):
 def isPosted(comments):
     for comment in comments:
         if str(comment.author) == 'samacharbot2':
-            print "Already posted"
             return True
         else:
             return False
@@ -258,8 +257,8 @@ def start():
                     continue
 
         if nothing:
-            print "Nothing to do, sleeping for 2 minutes"
-            sleep(10)
+            print "Nothing to do, sleeping for 3 minutes"
+            sleep(180)
 
 
 if __name__ == '__main__':
