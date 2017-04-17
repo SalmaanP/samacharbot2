@@ -35,7 +35,8 @@ blocked = {"youtube.com",
            "fortune.com",
            "soundcloud.com",
            "self.mumbai",
-	   "independent.co.uk",
+           "independent.co.uk",
            "theatlantic.com",
-	   "store.steampowered.com"
-}
+           "store.steampowered.com",
+           "http://www.pajhwok.com/"
+           }
