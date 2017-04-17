@@ -1,0 +1,2 @@
+class ArticleExtractionFail(Exception):
+    pass

@@ -8,7 +8,7 @@ Uses two summarizing libraries
 
 2)[Sumy](https://github.com/miso-belica/sumy)
 
-Uses [Goose](https://github.com/grangier/python-goose) for scraping content.
+Uses [Newspaper](https://github.com/codelucas/newspaper/) for scraping content.
 
 Thanks to [sr33](https://github.com/sr33/OtherNewsSources) for relevant news links idea and implementation
 
@@ -18,7 +18,7 @@ Find the bot on reddit [here](https://www.reddit.com/u/samacharbot2)
 
 The main files are [samacharbot2.py](https://github.com/HunkDivine/samacharbot2/blob/master/samacharbot2.py), [altsummary.py](https://github.com/HunkDivine/samacharbot2/blob/master/altsummary.py) and [blacklist.py](https://github.com/HunkDivine/samacharbot2/blob/master/blacklist.py), ignore the rest, they are either config files for heroku or files for testing.
 
-#Contribute
+# Contribute
 
 Help me in identifying websites which break the bot which provide summaries like "Javascript is not enabled" or "Email not sent" or other such messages.
 
@@ -27,24 +27,16 @@ Fork, edit the [blacklist file](https://github.com/HunkDivine/samacharbot2/blob/
 Thanks!
 
 
-#Subreddits
+# Subreddits
 
 Currently working on the following subreddits:
 
 * india
-
-* mumbai
-
-* TILinIndia
-
-* willis7737_news
-
-* freesoftware
-
-* parabola
-
-* libreboot
-
 * TESTBOTTEST
-
+* TILinIndia
+* willis7737_news
+* freesoftware
+* parabola
+* libreboot
+* mumbai
 * UpliftingKhabre

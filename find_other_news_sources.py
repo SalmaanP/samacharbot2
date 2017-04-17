@@ -51,7 +51,7 @@ def find_other_news_sources(url=None, title=None):
             templist = [title, a_link]
             new_links.append(templist)
             count = count + 1
-            print count
+            # print count
         except Exception as e:
             print "1Unknown ERROR\n"
             print type(e)
