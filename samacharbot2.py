@@ -257,9 +257,10 @@ def start():
                     continue
 
         if nothing:
-            print "Nothing to do, sleeping for 3 minutes"
-            sleep(180)
+            print "Nothing to do, sleeping for 1 minute"
+            sleep(60)
 
 
+			
 if __name__ == '__main__':
     start()
