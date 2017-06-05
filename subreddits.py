@@ -1,4 +1,4 @@
-subreddits = ['india',
+subreddits = [
               'TESTBOTTEST',
               'TILinIndia',
               'willis7737_news',
@@ -6,6 +6,8 @@ subreddits = ['india',
               'parabola',
               'libreboot',
               'mumbai',
-              'UpliftingKhabre']
+              'UpliftingKhabre',
+			  'worldnews'
+			  ]
 
 # subreddits = ['TESTBOTTEST']
