@@ -7,6 +7,7 @@ subreddits = [
               'libreboot',
               'mumbai',
               'UpliftingKhabre',
+			  'IndiaNonPolitical'
 			  ]
 
 # subreddits = ['TESTBOTTEST']
