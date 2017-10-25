@@ -40,3 +40,13 @@ Currently working on the following subreddits:
 * libreboot
 * mumbai
 * UpliftingKhabre
+
+
+
+## Bot is currently offline. Pull Requests appreciated! 
+- TODO: 
+    - Fix duplicate comment bug
+    - Update to latest version PRAW
+    - Replace goose with newspaper to aggregate content.
+    
+
